@@ -1,0 +1,17 @@
+{
+  "name": "universal-resource-manager",
+  "private": true,
+  "version": "0.2.4",
+  "description": "Chrome MV3 extension for unified page-link discovery and multipart download management.",
+  "scripts": {
+    "validate": "node tools/validate.mjs",
+    "test": "node tools/test-suite.mjs",
+    "build:public": "node scripts/build.mjs public",
+    "build:personal": "node scripts/build.mjs personal",
+    "build:developer": "node scripts/build.mjs developer",
+    "build": "node tools/validate.mjs && node tools/test-suite.mjs && node scripts/build.mjs public && node scripts/build.mjs personal && node scripts/build.mjs developer"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

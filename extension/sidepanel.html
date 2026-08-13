@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Universal Resource Manager</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand-wrap">
+        <img class="brand-icon" src="icons/icon48.png" alt="">
+        <div class="brand-text">
+          <div class="brand">Universal Resource Manager</div>
+          <div class="subtitle" id="pageMeta" data-i18n="side.ready">Local resource intelligence · Ready to scan</div>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button id="optionsButton" class="icon-button" title="Settings" aria-label="Settings" data-i18n-title="settings.button">⚙</button>
+        <button id="scanButton" class="primary" data-i18n="side.scan">Scan</button>
+      </div>
+    </header>
+
+    <div id="status" class="status hidden" role="status" aria-live="polite"></div>
+
+    <nav class="tabs" aria-label="Sections" data-i18n-aria="side.sections">
+      <button class="tab active" data-view="results" data-mode="parts"><span data-i18n="side.parts">Parts</span></button>
+      <button class="tab" data-view="results" data-mode="links"><span data-i18n="side.links">Links</span></button>
+      <button id="historyButton" class="tab" data-view="history" data-i18n="side.history">History</button>
+      <button id="queueButton" class="tab" data-view="queue"><span data-i18n="side.queue">Queue</span></button>
+      <button id="errorsButton" class="tab" data-view="errors"><span data-i18n="side.errors">Errors</span> <span id="errorCount" class="tab-count">0</span></button>
+    </nav>
+
+    <section id="resultsView">
+      <section class="toolbar">
+        <input id="search" type="search" placeholder="Search parts, file names, domains or URLs…" data-i18n-placeholder="side.search" autocomplete="off">
+        <div class="toolbar-row">
+          <button id="selectAll">همه</button>
+          <button id="selectNone">هیچ‌کدام</button>
+          <button id="invert">معکوس</button>
+          <select id="linkFilter" class="filter-select" aria-label="دسته‌بندی لینک‌ها">
+            <option value="all">همه دسته‌ها</option>
+            <option value="download">دانلودها</option>
+            <option value="archive">آرشیوها</option>
+            <option value="package">پکیج‌ها</option>
+            <option value="media">رسانه</option>
+            <option value="image">تصاویر</option>
+            <option value="document">اسناد</option>
+            <option value="script">اسکریپت</option>
+            <option value="external">خارجی</option>
+            <option value="internal">داخلی</option>
+          </select>
+          <span id="count" class="muted">0 selected</span>
+        </div>
+      </section>
+      <section id="summary" class="summary"></section>
+      <section id="list" class="list"></section>
+    </section>
+
+    <section id="historyView" class="utility-view hidden">
+      <div class="utility-head"><div><strong data-i18n="history.title">Scan history</strong><small id="historyScopeLabel" data-i18n="history.site">Scans for this site</small></div><div class="utility-actions"><button id="historyScopeSite" data-i18n="history.thisSite">This site</button><button id="historyScopeAll" data-i18n="history.allSites">All sites</button><button id="historyRefresh" aria-label="Refresh">↻</button></div></div>
+      <div id="historyPanel" class="history-panel"></div>
+    </section>
+
+    <section id="queueView" class="utility-view hidden"><div class="utility-head"><div><strong data-i18n="queue.title">Download Center</strong><small data-i18n="queue.desc">Persistent Chrome download queue</small></div><div class="utility-actions"><button id="queueRefresh" aria-label="Refresh">↻</button></div></div><div id="queuePanel" class="queue-panel"></div></section>
+
+<section id="errorsView" class="utility-view hidden">
+      <div class="utility-head"><div><strong data-i18n="errors.title">Error center</strong><small data-i18n="errors.desc">Recent scan, storage and download errors</small></div><div class="utility-actions"><button id="errorsRefresh" aria-label="Refresh">↻</button><button id="errorsOptions" data-i18n="errors.diagnostics">Diagnostics</button></div></div>
+      <div id="errorsPanel" class="errors-panel"></div>
+    </section>
+
+    <footer id="resultsFooter" class="footer">
+      <div class="footer-left">
+        <button id="copyButton">کپی</button>
+        <button id="txtButton">TXT</button>
+        <button id="jsonButton">JSON</button>
+      </div>
+      <button id="validateButton" data-i18n="export.validate">Validate selected</button><button id="downloadButton" class="primary" data-i18n="export.downloadSelected">Download selected</button>
+    </footer>
+  </main>
+  <script src="profile.js"></script><script src="i18n.js"></script>
+  <script src="sidepanel.js"></script>
+</body>
+</html>

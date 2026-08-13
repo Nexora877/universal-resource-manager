@@ -1,0 +1,23 @@
+name: Bug report
+description: Report a reproducible problem
+body:
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Extension version
+      placeholder: 0.2.4

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title data-i18n="options.title">Universal Resource Manager — Settings</title>
+<link rel="stylesheet" href="options.css">
+</head>
+<body>
+<main class="page">
+  <div class="settings-search">
+    <input id="settingsSearch" type="search" placeholder="Search settings, themes or diagnostics…" data-i18n-placeholder="options.search" autocomplete="off" aria-label="Search settings" data-i18n-aria="options.search">
+  </div>
+
+  <header class="hero">
+    <img src="icons/icon48.png" alt="" class="icon">
+    <div>
+      <h1>Universal Resource Manager</h1>
+      <p data-i18n="options.subtitle">Settings, appearance, themes, privacy, history and diagnostics</p>
+    </div>
+  </header>
+
+  <section class="card" data-search="ظاهر تجربه کاربری تم رنگ تأکیدی حالت فشرده کاهش حرکت">
+    <div class="section-head"><div><h2 data-i18n="options.appearance.title">Appearance & Experience</h2><p data-i18n="options.appearance.desc">Tune the extension for everyday or professional use.</p></div></div>
+    <label class="setting"><span><strong data-i18n="settings.language">Language</strong><small data-i18n="settings.language.desc">Default is English. Persian is also supported.</small></span><select id="language"><option value="en" data-i18n="language.en">English</option><option value="fa" data-i18n="language.fa">فارسی</option></select></label>
+    <label class="setting"><span><strong data-i18n="settings.theme">Theme</strong><small data-i18n="settings.theme.desc">Choose how the interface is displayed.</small></span><select id="theme"><option value="system" data-i18n="theme.system">System</option><option value="dark" data-i18n="theme.dark">Dark</option><option value="light" data-i18n="theme.light">Light</option></select></label>
+    <label class="setting"><span><strong data-i18n="settings.accent">Accent color</strong><small data-i18n="settings.accent.desc">Color used for buttons, selections and important states.</small></span><select id="accentColor"><option value="default" data-i18n="accent.default">Default</option><option value="blue" data-i18n="accent.blue">Blue</option><option value="purple" data-i18n="accent.purple">Purple</option><option value="teal" data-i18n="accent.teal">Teal</option><option value="orange" data-i18n="accent.orange">Orange</option><option value="rose" data-i18n="accent.rose">Rose</option><option value="green" data-i18n="accent.green">Green</option></select></label>
+    <label class="setting"><span><strong data-i18n="settings.compact">Compact mode</strong><small data-i18n="settings.compact.desc">Reduce spacing so more results fit on screen.</small></span><input id="compactMode" type="checkbox"></label>
+    <label class="setting"><span><strong data-i18n="settings.motion">Reduce motion</strong><small data-i18n="settings.motion.desc">Reduce interface animations and transitions.</small></span><input id="reduceMotion" type="checkbox"></label>
+  </section>
+
+  <section class="card" data-search="فروشگاه تم theme store پوسته تم‌های آماده ظاهر آفلاین">
+    <div class="section-head"><div><h2 data-i18n="theme.store.title">Theme Store</h2><p data-i18n="theme.store.desc">Try curated local themes without sending data to a server.</p></div><span class="store-badge" data-i18n="offline">Offline</span></div>
+    <div id="themeStore" class="theme-store"></div>
+    <div class="theme-actions"><button id="exportTheme" data-i18n="theme.export">Export theme</button><button id="importTheme" data-i18n="theme.import">Import theme</button><input id="themeFile" type="file" accept="application/json" hidden></div>
+  </section>
+
+  <section class="card" data-search="اسکن خروجی query رشته پارامتر پایش منابع دسته بندی">
+    <div class="section-head"><div><h2 data-i18n="settings.scan.title">Scanning & Output</h2><p data-i18n="settings.scan.desc">Control resource discovery and output behavior.</p></div></div>
+    <label class="setting"><span><strong data-i18n="settings.confirm">Confirm before download</strong><small data-i18n="settings.confirm.desc">Ask for confirmation before starting a batch download.</small></span><input id="confirmDownloads" type="checkbox"></label>
+    <label class="setting"><span><strong data-i18n="settings.query">Keep query strings</strong><small data-i18n="settings.query.desc">Keep URL parameters such as token and query in output.</small></span><input id="keepQueryStrings" type="checkbox"></label>
+    <label class="setting"><span><strong data-i18n="settings.live">Watch for new resources</strong><small data-i18n="settings.live.desc">Detect resources added after the scan starts. Disabled until the live engine is available.</small></span><input id="liveScan" type="checkbox" disabled></label>
+    <label class="setting"><span><strong data-i18n="settings.concurrency">Concurrent downloads</strong><small data-i18n="settings.concurrency.desc">Maximum number of downloads managed at the same time.</small></span><select id="maxParallelDownloads"><option value="1">۱</option><option value="2">۲</option><option value="3">۳</option><option value="4">۴</option><option value="6">۶</option><option value="8">۸</option></select></label>
+  </section>
+
+  <section class="card" data-search="تاریخچه داده محلی سایت دامنه history site تاریخچه سایت">
+    <div class="section-head"><div><h2 data-i18n="settings.history.title">History & Local Data</h2><p data-i18n="settings.history.desc">Scan results are stored only in the extension local storage.</p></div></div>
+    <label class="setting"><span><strong data-i18n="settings.history.limit">Saved scans</strong><small data-i18n="settings.history.limit.desc">Maximum scan sessions kept on this device.</small></span><select id="historyLimit"><option value="3">۳</option><option value="5">۵</option><option value="8">۸</option><option value="12">۱۲</option><option value="20">۲۰</option><option value="30">۳۰</option></select></label>
+    <div class="actions"><button id="clearHistory" data-i18n="settings.history.clear">Clear all history</button><button id="resetSettings" data-i18n="settings.reset.all">Reset all settings</button><button id="resetAppearance" data-i18n="settings.reset.appearance">Reset appearance</button></div>
+    <div id="siteHistoryStats" class="mini-stats"></div>
+  </section>
+
+  <section class="card" data-search="diagnostics لاگ خطا عیب یابی گزارش فنی ارور error مرکز خطا">
+    <div class="section-head"><div><h2 data-i18n="settings.diagnostics.title">Diagnostics & Errors</h2><p data-i18n="settings.diagnostics.desc">Local diagnostics for scan and download troubleshooting.</p></div><span id="errorBadge" class="error-badge">۰ خطا</span></div>
+    <label class="setting"><span><strong data-i18n="settings.diagnostics.enabled">Enable diagnostics</strong><small data-i18n="settings.diagnostics.enabled.desc">Store important scan and download events for troubleshooting.</small></span><input id="diagnostics" type="checkbox"></label>
+    <label class="setting"><span><strong data-i18n="settings.logging.level">Logging level</strong><small data-i18n="settings.logging.level.desc">Control the amount of local diagnostic detail.</small></span><select id="loggingLevel"><option value="off" data-i18n="logging.off">Off</option><option value="normal" data-i18n="logging.normal">Normal</option><option value="full" data-i18n="logging.full">Full</option></select></label>
+    <label class="setting"><span><strong data-i18n="settings.logging.limit">Log retention</strong><small data-i18n="settings.logging.limit.desc">Maximum number of local diagnostic events to keep.</small></span><select id="logLimit"><option value="100">۱۰۰</option><option value="250">۲۵۰</option><option value="500">۵۰۰</option><option value="1000">۱۰۰۰</option></select></label>
+    <div id="errorCenter" class="error-center"></div>
+    <div class="diag-actions"><button id="refreshDiagnostics" data-i18n="diagnostics.refresh">Reload</button><button id="copyDiagnostics" data-i18n="diagnostics.copy">Copy report</button><button id="exportDiagnostics" data-i18n="diagnostics.save">Save report</button><button id="clearDiagnostics" data-i18n="diagnostics.clear">Clear log</button></div>
+    <pre id="diagnosticsView" class="diagnostics">هنوز گزارشی بارگذاری نشده است.</pre>
+  </section>
+
+  <section class="card" data-search="اطلاعات افزونه نسخه manifest کانال پردازش حریم خصوصی telemetry">
+    <div class="section-head"><div><h2 data-i18n="settings.about.title">Extension information</h2><p data-i18n="settings.about.desc">Build and privacy model.</p></div></div>
+    <div class="meta-grid">
+      <div><span>نام</span><strong>Universal Resource Manager</strong></div>
+      <div><span>نسخه</span><strong id="version">—</strong></div>
+      <div><span>Manifest</span><strong id="manifestVersion">—</strong></div>
+      <div><span>کانال</span><strong id="buildChannel">—</strong></div>
+      <div><span>حداقل Chrome</span><strong id="chromeMinimum">—</strong></div>
+      <div><span>پردازش</span><strong>محلی</strong></div>
+      <div><span>Telemetry</span><strong>خاموش</strong></div>
+      <div><span>موتور Scan</span><strong>v5</strong></div>
+    </div>
+  </section>
+
+  <section class="card privacy" data-search="privacy telemetry data server">
+    <h2 data-i18n="settings.privacy.title">Privacy</h2>
+    <p data-i18n="settings.privacy.desc">Resource discovery and processing happen locally. The extension does not send scan or diagnostics data to an external server. History, themes and logs are local.</p>
+  </section>
+
+  <div id="saved" class="saved" role="status" aria-live="polite"></div>
+</main>
+<script src="profile.js"></script><script src="i18n.js"></script>
+<script src="options.js"></script>
+</body>
+</html>
